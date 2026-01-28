@@ -1,83 +1,56 @@
-# Heart Failure Survival Analysis
+# Heart Failure Survival Analysis, Winter 2026
 
-**Michigan Data Science Team | Winter 2026**
+Survival analysis of heart failure patients to identify key factors that distinguish survival from death. Students will learn visualization, statistical analysis, and machine learning techniques to predict patient outcomes.
 
-Project Leads: Sina Bonakdar & Terry Zhang
+**Key Finding**: Two features are sufficient to distinguish survival from death using different classifiers.
 
----
+## Structure
 
-## Executive Summary
+Below is a high-level overview of the main components of this project.
 
-Survival analysis of heart failure patients is critical for identifying key factors that distinguish survival from mortality. This project provides a comprehensive, hands-on learning experience in clinical data science.
+<ins>**Dataset**</ins> {<small>`heart_failure_clinical_records_dataset.csv`</small>}
+<br>
+Heart failure clinical records from 299 patients with 13 features including age, ejection fraction, serum creatinine, and follow-up time. Binary outcome: survival or death.
 
-Through this tutorial series, students will:
+<ins>**Week 1: Data Exploration**</ins> {<small>`Week1.ipynb`</small>}
+<br>
+Introduction to the dataset, exploratory data analysis, and visualization techniques using Pandas, Seaborn, and Matplotlib.
 
-- Implement **visualization tools** to extract meaningful insights from clinical data
-- Apply **statistical and analytical methods** to understand feature relationships
-- Build **machine learning and deep learning classifiers** to predict patient outcomes
-- Evaluate model performance using **multiple evaluation metrics**
+<ins>**Week 2: Statistical Analysis**</ins> {<small>`Week2.ipynb`</small>}
+<br>
+Hypothesis testing (T-test, Mann-Whitney U), correlation analysis, multiple testing correction (FDR), and feature importance using Random Forest.
 
-**Key Finding**: By the end of this project, students will discover that only **two features** are sufficient to distinguish survival from death using various classifiers.
+## Schedule
 
----
-
-## Project Structure
-
-| Week | Topic | Description | Key Concepts |
-|------|-------|-------------|--------------|
-| 1 | Data Exploration | Dataset overview, visualization, and initial insights | Pandas, Seaborn, Matplotlib, EDA |
-| 2 | Statistical Analysis | Hypothesis testing, correlation, and feature importance | T-test, Mann-Whitney U, FDR, Random Forest |
-
----
-
-## Dataset
-
-**Heart Failure Clinical Records Dataset**
-- 299 patients with heart failure
-- 13 clinical features including age, ejection fraction, serum creatinine
-- Binary outcome: survival or death during follow-up
-
-Source: [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Heart+failure+clinical+records)
-
----
+| **Week** | **Topic** | **Links** |
+| --- | --- | --- |
+| 1 | Data Exploration | [Notebook](Week1.ipynb), [Seaborn Docs](https://seaborn.pydata.org/), [Pandas Docs](https://pandas.pydata.org/docs/) |
+| 2 | Statistical Analysis | [Notebook](Week2.ipynb), [Scipy Stats](https://docs.scipy.org/doc/scipy/reference/stats.html), [Statsmodels](https://www.statsmodels.org/) |
 
 ## Resources
 
-### Statistical Analysis
-- [Scipy Stats Documentation](https://docs.scipy.org/doc/scipy/reference/stats.html)
-- [Statsmodels Guide](https://www.statsmodels.org/stable/index.html)
-
-### Machine Learning
-- [Scikit-learn Documentation](https://scikit-learn.org/stable/)
-- [Feature Selection Techniques](https://scikit-learn.org/stable/modules/feature_selection.html)
-
-### Deep Learning
-- [TensorFlow Tutorials](https://www.tensorflow.org/tutorials)
-- [PyTorch Documentation](https://pytorch.org/docs/stable/index.html)
-
-### Research Paper
+- [UCI Dataset](https://archive.ics.uci.edu/ml/datasets/Heart+failure+clinical+records)
+- [Scikit-learn](https://scikit-learn.org/stable/)
 - Chicco, D., Jurman, G. *Machine learning can predict survival of patients with heart failure*. BMC Med Inform Decis Mak 20, 16 (2020)
-
----
 
 ## Getting Started
 
 ```bash
-# Clone the repository
 git clone https://github.com/MichiganDataScienceTeam/W26-MDST-Project_Heart-Failure-Survival-Analysis.git
-
-# Create virtual environment
+cd W26-MDST-Project_Heart-Failure-Survival-Analysis
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
+source venv/bin/activate
 pip install -r requirements.txt
-
-# Launch Jupyter
 jupyter notebook
 ```
 
----
+## Acknowledgements
+
+<big>**Leads**</big>
+<br>
+Sina Bonakdar
+<br>
+Terry Zhang
 
 ## License
 
