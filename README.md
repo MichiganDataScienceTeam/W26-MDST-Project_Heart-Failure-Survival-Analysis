@@ -26,6 +26,10 @@ Hypothesis testing (T-test, Mann-Whitney U), correlation analysis, multiple test
 <br>
 Data normalization (Z-score), dimensionality reduction with PCA, K-Means clustering, hierarchical (agglomerative) clustering, confusion matrices, silhouette scores, and the elbow method.
 
+<ins>**Tutorials**</ins> {<small>`tutorials/`</small>}
+<br>
+Beginner-friendly guides for [Git](tutorials/git_tutorial.md) and [Python virtual environments](tutorials/venv_tutorial.md).
+
 ## Schedule
 
 | **Week** | **Topic** | **Links** |
@@ -60,6 +64,8 @@ This project is based on the paper by Chicco & Jurman (2020):
 - [Project Website](https://michigandatascienceteam.github.io/W26-MDST-Project_Heart-Failure-Survival-Analysis/)
 - [UCI Dataset](https://archive.ics.uci.edu/ml/datasets/Heart+failure+clinical+records)
 - [Scikit-learn](https://scikit-learn.org/stable/)
+- [Git Tutorial](tutorials/git_tutorial.md)
+- [Virtual Environment Tutorial](tutorials/venv_tutorial.md)
 
 ## Getting Started
 
@@ -71,6 +77,8 @@ source venv/bin/activate
 pip install -r requirements.txt
 jupyter notebook
 ```
+
+New to Git or virtual environments? See the [Git Tutorial](tutorials/git_tutorial.md) and [Virtual Environment Tutorial](tutorials/venv_tutorial.md) for detailed walkthroughs.
 
 ## Acknowledgements
 
