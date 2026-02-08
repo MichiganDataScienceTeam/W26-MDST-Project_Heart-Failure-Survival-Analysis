@@ -72,7 +72,7 @@ This project is based on the paper by Chicco & Jurman (2020):
 ```bash
 git clone https://github.com/MichiganDataScienceTeam/W26-MDST-Project_Heart-Failure-Survival-Analysis.git
 cd W26-MDST-Project_Heart-Failure-Survival-Analysis
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 jupyter notebook
