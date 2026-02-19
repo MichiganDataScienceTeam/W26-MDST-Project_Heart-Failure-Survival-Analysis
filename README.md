@@ -26,6 +26,14 @@ Hypothesis testing (T-test, Mann-Whitney U), correlation analysis, multiple test
 <br>
 Data normalization (Z-score), dimensionality reduction with PCA, K-Means clustering, hierarchical (agglomerative) clustering, confusion matrices, silhouette scores, and the elbow method.
 
+<ins>**Week 4: Supervised Learning**</ins> {<small>`Week4.ipynb`</small>}
+<br>
+Train/test splitting with stratification, feature normalization, and classification algorithms including Logistic Regression, Random Forest, Support Vector Machines (SVM), and K-Nearest Neighbors (KNN). Model evaluation using accuracy, precision, recall, and F1-score metrics.
+
+<ins>**Week 5: Hyperparameter Optimization**</ins> {<small>`Week5.ipynb`</small>}
+<br>
+Advanced techniques for tuning machine learning models using GridSearchCV, Random Search, and Bayesian Optimization with Optuna. Learn to efficiently search hyperparameter space and find optimal model configurations.
+
 <ins>**Tutorials**</ins> {<small>`tutorials/`</small>}
 <br>
 Beginner-friendly guides for [Git](tutorials/git_tutorial.md) and [Python virtual environments](tutorials/venv_tutorial.md).
@@ -37,6 +45,8 @@ Beginner-friendly guides for [Git](tutorials/git_tutorial.md) and [Python virtua
 | 1 | Data Exploration | [Notebook](Week1.ipynb), [Seaborn Docs](https://seaborn.pydata.org/), [Pandas Docs](https://pandas.pydata.org/docs/) |
 | 2 | Statistical Analysis | [Notebook](Week2.ipynb), [Slides](slides/week2_slides.pdf), [Scipy Stats](https://docs.scipy.org/doc/scipy/reference/stats.html), [Statsmodels VIF](https://www.statsmodels.org/stable/generated/statsmodels.stats.outliers_influence.variance_inflation_factor.html) |
 | 3 | Unsupervised Learning | [Notebook](Week3.ipynb), [Slides](slides/week3_slides.pdf), [PCA Guide](https://scikit-learn.org/stable/modules/decomposition.html#pca), [Clustering](https://scikit-learn.org/stable/modules/clustering.html) |
+| 4 | Supervised Learning | [Notebook](Week4.ipynb), [Slides](slides/week4_slides.pdf), [Scikit-learn Classifiers](https://scikit-learn.org/stable/supervised_learning.html), [Model Evaluation](https://scikit-learn.org/stable/modules/model_evaluation.html) |
+| 5 | Hyperparameter Optimization | [Notebook](Week5.ipynb), [Slides](slides/week5_slides.pdf), [Optuna Docs](https://optuna.readthedocs.io/), [GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html) |
 
 ## Research Background
 
