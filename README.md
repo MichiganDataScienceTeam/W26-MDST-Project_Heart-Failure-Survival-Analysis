@@ -34,9 +34,13 @@ Train/test splitting with stratification, feature normalization, and classificat
 <br>
 Advanced techniques for tuning machine learning models using GridSearchCV, Random Search, and Bayesian Optimization with Optuna. Learn to efficiently search hyperparameter space and find optimal model configurations.
 
-<ins>**Tutorials**</ins> {<small>`tutorials/`</small>}
+<ins>**Week 6: Ensemble Methods & Boosting**</ins> {<small>`Week6.ipynb`</small>}
 <br>
-Beginner-friendly guides for [Git](tutorials/git_tutorial.md) and [Python virtual environments](tutorials/venv_tutorial.md).
+From Random Forest to Gradient Boosting to LightGBM. Learn how ensemble methods combine weak learners into strong predictors. Includes hyperparameter tuning with Optuna, evaluation with 4 metrics, and hands-on exercises. **BONUS section** with detailed mechanism explanations.
+
+<ins>**Tutorials**</ins> {<small>`Git_Tutorial.ipynb`, `Venv_Tutorial.ipynb`</small>}
+<br>
+Interactive Jupyter notebooks for [Git basics](Git_Tutorial.ipynb) and [Python virtual environments](Venv_Tutorial.ipynb). Also available as markdown guides in [tutorials/](tutorials/) folder.
 
 ## Schedule
 
@@ -47,6 +51,7 @@ Beginner-friendly guides for [Git](tutorials/git_tutorial.md) and [Python virtua
 | 3 | Unsupervised Learning | [Notebook](Week3.ipynb), [Slides](slides/week3_slides.pdf), [PCA Guide](https://scikit-learn.org/stable/modules/decomposition.html#pca), [Clustering](https://scikit-learn.org/stable/modules/clustering.html) |
 | 4 | Supervised Learning | [Notebook](Week4.ipynb), [Slides](slides/week4_slides.pdf), [Scikit-learn Classifiers](https://scikit-learn.org/stable/supervised_learning.html), [Model Evaluation](https://scikit-learn.org/stable/modules/model_evaluation.html) |
 | 5 | Hyperparameter Optimization | [Notebook](Week5.ipynb), [Slides](slides/week5_slides.pdf), [Optuna Docs](https://optuna.readthedocs.io/), [GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html) |
+| 6 | Ensemble Methods & Boosting | [Notebook](Week6.ipynb), [Slides](slides/week6_slides.pdf), [LightGBM Docs](https://lightgbm.readthedocs.io/), [Chicco & Jurman (2020)](https://bmcmedinformdecismak.biomedcentral.com/articles/10.1186/s12911-020-1023-5) |
 
 ## Research Background
 
@@ -71,14 +76,24 @@ This project is based on the paper by Chicco & Jurman (2020):
 
 ## Resources
 
+### Project
 - [Project Website](https://michigandatascienceteam.github.io/W26-MDST-Project_Heart-Failure-Survival-Analysis/)
 - [UCI Dataset](https://archive.ics.uci.edu/ml/datasets/Heart+failure+clinical+records)
-- [Scikit-learn](https://scikit-learn.org/stable/)
-- [Git Tutorial](tutorials/git_tutorial.md)
-- [Virtual Environment Tutorial](tutorials/venv_tutorial.md)
+
+### Setup Tutorials (Interactive Jupyter Notebooks)
+- [Git Tutorial](Git_Tutorial.ipynb) - Installation, setup, commands, workflows, branching
+- [Virtual Environment Tutorial](Venv_Tutorial.ipynb) - Python venv, package management, troubleshooting
+
+### Libraries & Tools
+- [Scikit-learn](https://scikit-learn.org/stable/) - Machine learning
+- [Pandas](https://pandas.pydata.org/docs/) - Data manipulation
+- [Seaborn](https://seaborn.pydata.org/) - Data visualization
+- [LightGBM](https://lightgbm.readthedocs.io/) - Gradient boosting
+- [Optuna](https://optuna.readthedocs.io/) - Hyperparameter optimization
 
 ## Getting Started
 
+### Quick Setup
 ```bash
 git clone https://github.com/MichiganDataScienceTeam/W26-MDST-Project_Heart-Failure-Survival-Analysis.git
 cd W26-MDST-Project_Heart-Failure-Survival-Analysis
@@ -88,7 +103,12 @@ pip install -r requirements.txt
 jupyter notebook
 ```
 
-New to Git or virtual environments? See the [Git Tutorial](tutorials/git_tutorial.md) and [Virtual Environment Tutorial](tutorials/venv_tutorial.md) for detailed walkthroughs.
+### Need Help?
+**New to Git?** Start with [Git_Tutorial.ipynb](Git_Tutorial.ipynb)
+<br>
+**New to Python virtual environments?** Check [Venv_Tutorial.ipynb](Venv_Tutorial.ipynb)
+<br>
+Both tutorials are interactive Jupyter notebooks - just open and read along!
 
 ## Acknowledgements
 
