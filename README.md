@@ -36,7 +36,11 @@ Advanced techniques for tuning machine learning models using GridSearchCV, Rando
 
 <ins>**Week 6: Ensemble Methods & Boosting**</ins> {<small>`Week6.ipynb`</small>}
 <br>
-From Random Forest to Gradient Boosting to LightGBM. Learn how ensemble methods combine weak learners into strong predictors. Includes hyperparameter tuning with Optuna, evaluation with 4 metrics, and hands-on exercises. **BONUS section** with detailed mechanism explanations.
+From Random Forest to Gradient Boosting to LightGBM. Learn how ensemble methods combine weak learners into strong predictors. Includes hyperparameter tuning with Optuna, evaluation with 4 metrics, and hands-on exercises.
+
+<ins>**Week 7: Feature Selection Methods**</ins> {<small>`Week7.ipynb`</small>}
+<br>
+Why fewer features often outperform more: Lasso (L1 penalty), Elastic Net (L1+L2), and MRMR filter method. Learn to identify which clinical features truly drive heart failure survival prediction.
 
 <ins>**Tutorials**</ins> {<small>`Git_Tutorial.ipynb`, `Venv_Tutorial.ipynb`</small>}
 <br>
@@ -52,6 +56,7 @@ Interactive Jupyter notebooks for [Git basics](Git_Tutorial.ipynb) and [Python v
 | 4 | Supervised Learning | [Notebook](Week4.ipynb), [Slides](slides/week4_slides.pdf), [Scikit-learn Classifiers](https://scikit-learn.org/stable/supervised_learning.html), [Model Evaluation](https://scikit-learn.org/stable/modules/model_evaluation.html) |
 | 5 | Hyperparameter Optimization | [Notebook](Week5.ipynb), [Slides](slides/week5_slides.pdf), [Optuna Docs](https://optuna.readthedocs.io/), [GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html) |
 | 6 | Ensemble Methods & Boosting | [Notebook](Week6.ipynb), [Slides](slides/week6_slides.pdf), [LightGBM Docs](https://lightgbm.readthedocs.io/), [Chicco & Jurman (2020)](https://bmcmedinformdecismak.biomedcentral.com/articles/10.1186/s12911-020-1023-5) |
+| 7 | Feature Selection Methods | [Notebook](Week7.ipynb), [Scikit-learn Feature Selection](https://scikit-learn.org/stable/modules/feature_selection.html) |
 
 ## Research Background
 
