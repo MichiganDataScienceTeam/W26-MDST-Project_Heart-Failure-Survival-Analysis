@@ -42,6 +42,14 @@ From Random Forest to Gradient Boosting to LightGBM. Learn how ensemble methods 
 <br>
 Why fewer features often outperform more: Lasso (L1 penalty), Elastic Net (L1+L2), and MRMR filter method. Learn to identify which clinical features truly drive heart failure survival prediction.
 
+<ins>**Week 8: Deep Learning for Medical Data**</ins> {<small>`Week8.ipynb`</small>}
+<br>
+Introduction to deep learning with Convolutional Neural Networks (CNNs) and Long Short-Term Memory (LSTMs). Learn neural network fundamentals, backpropagation, activation functions, and how to apply deep learning to clinical prediction tasks.
+
+<ins>**Week 9: AI Model Interpretation (PLS-DA & SHAP)**</ins> {<small>`Week9.ipynb`</small>}
+<br>
+Interpretability and explainability in machine learning. Partial Least Squares Discriminant Analysis (PLS-DA) for supervised dimensionality reduction, and SHAP (SHapley Additive exPlanations) for understanding model predictions and feature importance in black-box models.
+
 <ins>**Tutorials**</ins> {<small>`Git_Tutorial.ipynb`, `Venv_Tutorial.ipynb`</small>}
 <br>
 Interactive Jupyter notebooks for [Git basics](Git_Tutorial.ipynb) and [Python virtual environments](Venv_Tutorial.ipynb). Also available as markdown guides in [tutorials/](tutorials/) folder.
@@ -57,6 +65,8 @@ Interactive Jupyter notebooks for [Git basics](Git_Tutorial.ipynb) and [Python v
 | 5 | Hyperparameter Optimization | [Notebook](Week5.ipynb), [Slides](slides/week5_slides.pdf), [Optuna Docs](https://optuna.readthedocs.io/), [GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html) |
 | 6 | Ensemble Methods & Boosting | [Notebook](Week6.ipynb), [Slides](slides/week6_slides.pdf), [LightGBM Docs](https://lightgbm.readthedocs.io/), [Chicco & Jurman (2020)](https://bmcmedinformdecismak.biomedcentral.com/articles/10.1186/s12911-020-1023-5) |
 | 7 | Feature Selection Methods | [Notebook](Week7.ipynb), [Scikit-learn Feature Selection](https://scikit-learn.org/stable/modules/feature_selection.html) |
+| 8 | Deep Learning for Medical Data | [Notebook](Week8.ipynb), [TensorFlow Docs](https://www.tensorflow.org/), [Keras API](https://keras.io/), [Understanding Neural Networks](https://colah.github.io/posts/2014-03-NN-Manifolds-Topology/) |
+| 9 | AI Model Interpretation (PLS-DA & SHAP) | [Notebook](Week9.ipynb), [Slides](slides/Week9_AI_Interpretation_PLSDA_SHAP.pptx), [SHAP Docs](https://shap.readthedocs.io/), [PLS-DA Guide](https://scikit-learn.org/stable/modules/cross_decomposition.html) |
 
 ## Research Background
 
