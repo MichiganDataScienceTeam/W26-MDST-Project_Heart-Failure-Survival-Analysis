@@ -6,6 +6,10 @@ Survival analysis of heart failure patients to identify key factors that disting
 
 **[View Project Website](https://michigandatascienceteam.github.io/W26-MDST-Project_Heart-Failure-Survival-Analysis/)**
 
+## Poster
+
+[![Research Poster](slides/poster-1.png)](slides/poster.pdf)
+
 ## Structure
 
 Below is a high-level overview of the main components of this project.

@@ -1,0 +1,463 @@
+% ============================================================
+% Heart Failure Survival Analysis — Research Poster
+% beamerposter · landscape 120×85 cm · full-page fill
+% ============================================================
+\documentclass[final]{beamer}
+
+\usepackage[
+  orientation=landscape,
+  size=custom,
+  width=120,
+  height=85,
+  scale=1.1
+]{beamerposter}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,calc}
+\usepackage[table]{xcolor}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{tabularx}
+\usepackage{ragged2e}
+
+% ── Palette ──────────────────────────────────────────────
+\definecolor{Navy}{HTML}{1e3a5f}
+\definecolor{Blue}{HTML}{2563eb}
+\definecolor{LBlue}{HTML}{dbeafe}
+\definecolor{Green}{HTML}{15803d}
+\definecolor{LGreen}{HTML}{dcfce7}
+\definecolor{Amber}{HTML}{b45309}
+\definecolor{LAmber}{HTML}{fef3c7}
+\definecolor{TGray}{HTML}{334155}
+\definecolor{LGray}{HTML}{64748b}
+\definecolor{Border}{HTML}{cbd5e1}
+
+% ── Strip beamer chrome ──────────────────────────────────
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{}
+\setbeamertemplate{footline}{}
+\setbeamercolor{background canvas}{bg=white}
+
+% ── Block style ──────────────────────────────────────────
+\setbeamercolor{block title}{fg=white, bg=Navy}
+\setbeamercolor{block body}{fg=TGray, bg=white}
+\setbeamerfont{block title}{size=\large, series=\bfseries}
+\setbeamerfont{block body}{size=\normalsize}
+
+\setbeamertemplate{block begin}{%
+  \vskip0.5cm
+  \begin{beamercolorbox}[
+    wd=\linewidth, ht=3.2ex, dp=1.0ex,
+    leftskip=0.8em, rightskip=0.5em
+  ]{block title}%
+    \usebeamerfont{block title}\insertblocktitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[
+    wd=\linewidth,
+    leftskip=0.8em, rightskip=0.8em,
+    sep=0.7em
+  ]{block body}%
+    \usebeamerfont{block body}%
+}
+\setbeamertemplate{block end}{%
+  \end{beamercolorbox}%
+  \vskip0.15cm%
+}
+
+% ── Finding cards ────────────────────────────────────────
+\tcbset{
+  findcard/.style={
+    enhanced, sharp corners,
+    colback=#1!8, colframe=#1!50,
+    boxrule=1.5pt,
+    left=7pt, right=7pt, top=5pt, bottom=5pt,
+    fontupper=\normalsize,
+  }
+}
+
+\setlength{\columnsep}{0.9cm}
+\setlist[itemize]{leftmargin=1.3em, itemsep=3pt, topsep=3pt}
+
+% ============================================================
+\begin{document}
+\begin{frame}[t]{}
+
+% ── HEADER ───────────────────────────────────────────────
+\begin{tikzpicture}[remember picture, overlay]
+  \fill[Navy] (0,-5.8cm) rectangle (\paperwidth,0);
+  \node[anchor=west, text=white,
+        font=\fontsize{52}{60}\selectfont\bfseries]
+    at (2cm,-1.3cm) {Heart Failure Survival Analysis};
+  \node[anchor=west, text=LBlue, font=\Large]
+    at (2cm,-3.0cm)
+    {Machine Learning Prediction from Clinical Records
+     \enspace\textbullet\enspace
+     Michigan Data Science Team, Winter 2026};
+  \node[anchor=west, text=Border, font=\large]
+    at (2cm,-4.6cm)
+    {Chicco \& Jurman (2020)\ \emph{BMC Medical Informatics
+     and Decision Making}\ 20(16)};
+\end{tikzpicture}
+\vspace{6.3cm}
+
+% ── BODY ─────────────────────────────────────────────────
+\hspace{0.4cm}%
+\begin{columns}[t, totalwidth=119.2cm]
+
+%=============================================================
+% COL 1 — Background · Dataset · Statistics · Unsupervised
+%=============================================================
+\begin{column}{28.8cm}
+
+\begin{block}{Background \& Motivation}
+  Heart failure is a leading global cause of mortality. This
+  project applies a complete 9-week ML curriculum to \textbf{299}
+  clinical patient records to determine whether
+  \textbf{routine biomarkers} alone can reliably predict survival.
+
+  \medskip
+  \textbf{Core question:} Can we match full-feature model accuracy
+  using only the 2 most informative biomarkers?
+
+  \medskip
+  \textbf{Approach:} Statistical testing, unsupervised clustering,
+  supervised classification, ensemble methods, feature selection,
+  deep learning, and SHAP explainability — applied end-to-end on
+  the same dataset across 9 weeks.
+\end{block}
+
+\begin{block}{Dataset — UCI Heart Failure Records}
+  \medskip
+  \begin{tikzpicture}
+    \pgfmathsetmacro{\survW}{26*0.679}
+    \pgfmathsetmacro{\midS}{\survW/2}
+    \pgfmathsetmacro{\midD}{\survW + (26-\survW)/2}
+    \fill[Blue!65]  (0,0)         rectangle (\survW, 0.75);
+    \fill[Amber!70] (\survW,0)    rectangle (26,     0.75);
+    \node[white, font=\normalsize\bfseries, anchor=center]
+      at (\midS, 0.375) {Survived\ \ 203\ \ (67.9\%)};
+    \node[white, font=\normalsize\bfseries, anchor=center]
+      at (\midD, 0.375) {Deceased\ \ 96\ \ (32.1\%)};
+  \end{tikzpicture}
+
+  \medskip
+  \setlength{\tabcolsep}{6pt}
+  \renewcommand{\arraystretch}{1.35}
+  \begin{tabularx}{\linewidth}{@{}Xcc@{}}
+    \toprule
+    \textbf{Feature} & \textbf{Type} & \textbf{Range} \\
+    \midrule
+    \rowcolor{LBlue}\textbf{Ejection Fraction}$^\star$ & Numeric & 14–80\% \\
+    \rowcolor{LBlue}\textbf{Serum Creatinine}$^\star$  & Numeric & 0.5–9.4 mg/dL \\
+    Age                & Numeric & 40–95 yr \\
+    Follow-up Time     & Numeric & 4–285 days \\
+    Serum Sodium       & Numeric & 114–148 mEq/L \\
+    CPK, Platelets     & Numeric & variable \\
+    Anaemia / Diabetes & Binary  & 0 / 1 \\
+    High BP / Smoking  & Binary  & 0 / 1 \\
+    \textbf{DEATH\_EVENT} & Target & 0 / 1 \\
+    \bottomrule
+  \end{tabularx}
+  \smallskip
+  {\small $^\star$ Top predictors confirmed by MRMR, Lasso, and SHAP}
+\end{block}
+
+\begin{block}{Statistical Analysis — Week 2}
+  T-test + Mann-Whitney U with Benjamini-Hochberg FDR
+  correction. Significant features (p\,<\,0.05):
+
+  \medskip
+  \setlength{\tabcolsep}{6pt}
+  \renewcommand{\arraystretch}{1.35}
+  \begin{tabularx}{\linewidth}{@{}Xr@{}}
+    \toprule
+    \textbf{Feature} & \textbf{p-value} \\
+    \midrule
+    \rowcolor{LGreen}Follow-up Time    & $2.3\times10^{-22}$ \\
+    \rowcolor{LGreen}Ejection Fraction & $9.6\times10^{-6}$  \\
+    \rowcolor{LGreen}Serum Creatinine  & $6.4\times10^{-5}$  \\
+    \rowcolor{LGreen}Age               & $4.7\times10^{-5}$  \\
+    Serum Sodium      & $<0.05$             \\
+    Anaemia, Diabetes, Smoking, Sex & n.s. \\
+    \bottomrule
+  \end{tabularx}
+\end{block}
+
+\begin{block}{Unsupervised Learning — Week 3}
+  \textbf{PCA:} 9 components needed for 80\% explained variance
+  — no single dominant structure, motivating supervised methods.
+
+  \medskip
+  \textbf{K-Means} (k=2): 165 vs.\ 134 patients.
+  Clusters show moderate alignment with outcome labels but
+  cannot reliably separate survival classes alone.
+
+  \medskip
+  \textbf{Hierarchical clustering:} Agglomerative linkage with
+  elbow method and silhouette analysis both confirm k=2 as the
+  natural partition.
+\end{block}
+
+\end{column}
+
+%=============================================================
+% COL 2 — Pipeline · Feature Selection
+%=============================================================
+\begin{column}{28.8cm}
+
+\begin{block}{9-Week ML Pipeline}
+  \begin{center}
+  \begin{tikzpicture}[
+    nd/.style={
+      rectangle, rounded corners=5pt,
+      draw=Blue!40, fill=LBlue,
+      minimum width=10.5cm, minimum height=0.85cm,
+      font=\normalsize\bfseries, text=Navy, align=center
+    },
+    ar/.style={-Stealth, very thick, Blue!55},
+    node distance=0.30cm
+  ]
+    \node[nd](w1){W1\enspace EDA \& Visualisation};
+    \node[nd,below=of w1](w2){W2\enspace Hypothesis Testing (T-test, FDR)};
+    \node[nd,below=of w2](w3){W3\enspace PCA \& Clustering};
+    \node[nd,below=of w3](w4){W4\enspace Supervised Classifiers};
+    \node[nd,below=of w4](w5){W5\enspace Hyperparameter Optimisation};
+    \node[nd,below=of w5](w6){W6\enspace Ensemble Methods};
+    \node[nd,below=of w6](w7){W7\enspace Feature Selection};
+    \node[nd,below=of w7](w8){W8\enspace Deep Learning (MLP)};
+    \node[nd,below=of w8](w9){W9\enspace SHAP \& PLS-DA};
+    \foreach \s/\t in
+      {w1/w2,w2/w3,w3/w4,w4/w5,w5/w6,w6/w7,w7/w8,w8/w9}
+      {\draw[ar](\s)--(\t);}
+  \end{tikzpicture}
+  \end{center}
+
+  \medskip
+  \textbf{Train/Test split:} 70/30 stratified (209 train / 90 test).
+  All scaling and feature selection fitted on training data only to
+  prevent leakage. LightGBM tuned with Optuna Bayesian
+  optimisation over 100 trials.
+\end{block}
+
+\begin{block}{Feature Selection — Week 7}
+  Three independent methods converge on the same top features:
+
+  \medskip
+  \setlength{\tabcolsep}{6pt}
+  \renewcommand{\arraystretch}{1.35}
+  \begin{tabularx}{\linewidth}{@{}lX@{}}
+    \toprule
+    \textbf{Method} & \textbf{Selected Features} \\
+    \midrule
+    Lasso (L1)    & EF, SC, CPK, age \\
+    Elastic Net   & EF, SC, age, sodium, CPK\ldots \\
+    \textbf{MRMR} & \textbf{SC + EF only} \\
+    \bottomrule
+  \end{tabularx}
+
+  \medskip
+  \textbf{Random Forest importance scores:}
+
+  \medskip
+  \foreach \feat/\val/\w in {
+    {Serum Creatinine}/{0.227}/9.5,
+    {Ejection Fraction}/{0.189}/7.9,
+    {CPK}/{0.138}/5.8,
+    {Platelets}/{0.125}/5.2,
+    {Age}/{0.113}/4.7,
+    {Serum Sodium}/{0.100}/4.2%
+  }{%
+    \begin{tikzpicture}[baseline=-0.07cm]
+      \node[anchor=west, font=\normalsize, minimum width=5.2cm, text=TGray]
+        at (0,0) {\feat};
+      \fill[Blue!55] (5.5cm,-0.14cm) rectangle (5.5cm+\w cm,0.30cm);
+      \node[anchor=west, font=\normalsize\bfseries, text=Navy]
+        at (5.5cm+\w cm+0.12cm,0.08cm) {\val};
+    \end{tikzpicture}\\[2pt]
+  }
+
+  \medskip
+  \begin{tcolorbox}[findcard=Green]
+    \textbf{\color{Green}Key result:}
+    Using only EF + SC, RF achieves
+    \textbf{Acc = 78.9\%, F1 = 0.655} —
+    matching full-feature models.
+  \end{tcolorbox}
+\end{block}
+
+\end{column}
+
+%=============================================================
+% COL 3 — Model Performance chart + table
+%=============================================================
+\begin{column}{28.8cm}
+
+\begin{block}{Model Performance — Test Set (n\,=\,90)}
+
+  \medskip
+  % Pure TikZ horizontal bar chart — guaranteed label display
+  \begin{tikzpicture}[x=1cm, y=1.0cm]
+    \foreach \lbl/\val/\clr/\i in {
+      MLP/0.678/gray!40/0,
+      {PLS-DA}/0.722/gray!45/1,
+      KNN/0.667/gray!40/2,
+      {Log.\ Reg.}/0.711/Blue!35/3,
+      {Grad.\ Boost.}/0.733/Blue!50/4,
+      {SVM (RBF)}/0.733/Blue!65/5,
+      {RF Baseline}/0.733/Blue!78/6,
+      {2-Feat.\ RF}/0.789/Amber!80/7,
+      {LightGBM (T)}/0.778/Green!78/8%
+    }{
+      \pgfmathsetmacro{\blen}{(\val-0.60)/0.24*15}
+      \fill[\clr,rounded corners=2pt]
+        (0,\i+0.08) rectangle (\blen,\i+0.88);
+      \node[anchor=east, font=\normalsize, text=TGray]
+        at (-0.15,\i+0.48) {\lbl};
+      \node[anchor=west, font=\small\bfseries, text=TGray]
+        at (\blen+0.12,\i+0.48) {\val};
+    }
+    % grid lines + tick labels
+    \foreach \v/\lb in {0.65/{65\%},0.70/{70\%},0.75/{75\%},0.80/{80\%}}{
+      \pgfmathsetmacro{\tx}{(\v-0.60)/0.24*15}
+      \draw[gray!25,dotted,thin] (\tx,-0.05)--(\tx,9.05);
+      \node[anchor=north,font=\small,text=LGray] at (\tx,-0.1) {\lb};
+    }
+    \draw[gray!40,thin] (0,-0.05)--(15,-0.05);
+    \node[font=\normalsize,text=LGray] at (7.5,-0.7)
+      {Accuracy on held-out test set};
+  \end{tikzpicture}
+
+  \medskip
+  \setlength{\tabcolsep}{5pt}
+  \renewcommand{\arraystretch}{1.35}
+  \begin{tabularx}{\linewidth}{@{}Xcccc@{}}
+    \toprule
+    \textbf{Model} & \textbf{Acc} & \textbf{F1} & \textbf{MCC} & \textbf{AUC} \\
+    \midrule
+    \rowcolor{LGreen}
+    \textbf{LightGBM}\,$^\star$ & \textbf{.778} & \textbf{.667} & \textbf{.501} & .747 \\
+    \rowcolor{LAmber}
+    2-Feat.\ RF\,$^\dagger$     & .789 & .655 & —    & —    \\
+    RF Baseline                 & .733 & .600 & .401 & .760 \\
+    Grad.\ Boosting             & .733 & .586 & .390 & .709 \\
+    SVM (RBF)                   & .733 & .520 & —    & \textbf{.768} \\
+    Logistic Reg.               & .711 & .458 & —    & .746 \\
+    KNN                         & .667 & .348 & —    & .643 \\
+    PLS-DA                      & .722 & .444 & —    & —    \\
+    MLP (500\,ep.)              & .68  & —    & —    & —    \\
+    \bottomrule
+  \end{tabularx}
+  \smallskip
+  {\small $^\star$\,Optuna-tuned.\enspace
+          $^\dagger$\,EF\,+\,SC only.\enspace
+          MCC accounts for class imbalance.}
+\end{block}
+
+\end{column}
+
+%=============================================================
+% COL 4 — Deep Learning · XAI · Key Findings · References
+%=============================================================
+\begin{column}{28.8cm}
+
+\begin{block}{Deep Learning — Week 8}
+  \textbf{PyTorch MLP architecture:}
+  Input(11) $\to$ Dense(32, ReLU) $\to$ Sigmoid(1)
+
+  \medskip
+  Loss: Binary cross-entropy \enspace|\enspace
+  Optimiser: Adam \enspace|\enspace
+  Epochs: 500 \enspace|\enspace
+  Early stopping on val loss
+
+  \medskip
+  \setlength{\tabcolsep}{6pt}
+  \renewcommand{\arraystretch}{1.35}
+  \begin{tabularx}{\linewidth}{@{}XXXX@{}}
+    \toprule
+    \textbf{Epoch} & \textbf{Train Loss} & \textbf{Val Loss} & \textbf{Test Acc} \\
+    \midrule
+    50  & 0.549 & 0.553 & 68.9\% \\
+    100 & 0.510 & 0.527 & 67.8\% \\
+    200 & 0.480 & 0.490 & 67.8\% \\
+    \bottomrule
+  \end{tabularx}
+
+  \medskip
+  Deep learning \emph{underperforms} tree ensembles on this
+  $n$\,=\,299 tabular dataset — consistent with the broader
+  literature on structured clinical data.
+\end{block}
+
+\begin{block}{Explainability: SHAP \& PLS-DA — Week 9}
+  \textbf{SHAP} applied to Random Forest and MLP
+  (KernelExplainer, 100 background samples, all 299 patients
+  explained):
+
+  \medskip
+  \begin{itemize}
+    \item \textbf{Global (beeswarm):} Serum creatinine and
+          ejection fraction dominate mean $|\text{SHAP}|$
+          across all patients
+    \item \textbf{Local (waterfall):} Elevated SC pushes
+          predictions toward death; high EF pushes toward
+          survival — interpretable per patient
+    \item \textbf{Model-agnostic:} RF and MLP agree on the
+          same top features, confirming result robustness
+  \end{itemize}
+
+  \medskip
+  \textbf{PLS-DA:} 2 latent variables achieve Acc = 72.2\%.
+  Most discriminative signal is concentrated in a subspace
+  aligned with ejection fraction and serum creatinine.
+\end{block}
+
+\begin{block}{Key Findings}
+  \begin{tcolorbox}[findcard=Green]
+    \textbf{\color{Green}2 Features Sufficient} —
+    EF + SC alone: Acc 78.9\%, F1 0.655
+  \end{tcolorbox}
+  \vspace{4pt}
+  \begin{tcolorbox}[findcard=Blue]
+    \textbf{\color{Blue}Best Overall: LightGBM (Tuned)} —
+    Acc 77.8\%, F1 0.667, MCC 0.501
+  \end{tcolorbox}
+  \vspace{4pt}
+  \begin{tcolorbox}[findcard=Amber]
+    \textbf{\color{Amber}Best Ranking: SVM (RBF)} —
+    AUC-ROC = 0.768
+  \end{tcolorbox}
+  \vspace{4pt}
+  \begin{tcolorbox}[findcard=Navy]
+    \textbf{\color{Navy}SHAP Consistent} —
+    RF and MLP agree on feature rankings
+  \end{tcolorbox}
+\end{block}
+
+\begin{block}{References}
+  Chicco \& Jurman (2020). \textit{Machine learning can predict
+  survival of patients with heart failure from serum creatinine
+  and ejection fraction alone.}
+  \textit{BMC Medical Informatics and Decision Making}, 20(16).
+
+  \medskip
+  UCI ML Repository: Heart Failure Clinical Records.
+  \textbf{Tools:} Python, scikit-learn, LightGBM, Optuna,
+  PyTorch, SHAP.
+
+  \medskip
+  \textbf{GitHub:} MichiganDataScienceTeam/
+  W26-MDST-Project\_Heart-Failure-Survival-Analysis
+\end{block}
+
+\end{column}
+\end{columns}
+
+\end{frame}
+\end{document}
